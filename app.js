@@ -10,9 +10,10 @@ switch (comando) {
         console.log(tarea);
         break;
     case 'listar':
-        let listado = porHacer.getListado();
+        (argv.completado === 'true') ? texto = 'Tareas Realizadas': texto = 'Por Hacer';
+        let listado = porHacer.getListado(argv.completado);
         for (let tarea of listado) {
-            console.log('========= Por Hacer ============'.green);
+            console.log(`========= ${texto} ============`.green);
             console.log(tarea.desc);
             console.log(`Estado: ${tarea.completado}`);
             console.log('================================'.green);

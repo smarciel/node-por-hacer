@@ -19,16 +19,16 @@ const cargarDB = () => {
     }
 }
 
-const getListado = () => {
+const getListado = (completado) => {
     cargarDB();
-    return listadoPorHacer;
+    return listadoPorHacer.filter(tarea => tarea.completado === completado);
 }
 
 const crear = (desc) => {
     cargarDB();
     let porHacer = {
         desc,
-        completado: false
+        completado: "false"
     };
     listadoPorHacer.push(porHacer);
     guardarDB();
